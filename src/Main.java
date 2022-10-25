@@ -36,7 +36,7 @@ public class Main {
         selectedBrand = sc.nextInt();
     }
     public void queryStatus(){
-        System.out.print("Enter your choice of brand [1-4]: ");
+        System.out.print("Enter your status [1-4]: ");
         selectedDiscount = sc.nextInt();
 
 }
