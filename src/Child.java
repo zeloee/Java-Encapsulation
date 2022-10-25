@@ -11,6 +11,10 @@ public class Child {
     // 68990 - 20,697 = 48,293
 
     // selectedBrand = 2, selectedDiscount = 4, total = 48,293
+    /**
+     * @param selectedBrand The brand of the item selected by the user.
+     * @param selectedDiscount 1-4
+     */
     public void setTotalBill(int selectedBrand, int selectedDiscount) {
         totalBill = priceList[selectedBrand-1] - (priceList[selectedBrand-1] * discountList[selectedDiscount-1]);
     }
@@ -19,6 +23,11 @@ public class Child {
     //   Scope: Public, 
     //   Type: String, int, double, so on... except void)
     //   Parameter: No parameter
+    /**
+     * This function returns the total bill
+     * 
+     * @return The total bill.
+     */
     public double getTotalBill() {
         return totalBill;
     }

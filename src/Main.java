@@ -32,16 +32,28 @@ public class Main {
         displayComputation();
     }
 
+    /**
+     * This function asks the user to enter a number between 1 and 4, and then stores that number in
+     * the variable selectedBrand
+     */
     public void queryBrand() {
         System.out.print("Enter your choice of brand [1-4]: ");
         selectedBrand = sc.nextInt();
     }
 
+    /**
+     * This function asks the user to enter a status number and then stores that number in the variable
+     * selectedDiscount.
+     */
     public void queryStatus() {
         System.out.print("Enter status [1-4]: ");
         selectedDiscount = sc.nextInt();
     }
 
+    /**
+     * The function takes the selected brand and discount from the user and passes it to the child
+     * class to calculate the total bill
+     */
     public void displayComputation() {
         Child child = new Child();
         child.setTotalBill(selectedBrand, selectedDiscount);
