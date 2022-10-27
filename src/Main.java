@@ -1,7 +1,40 @@
+import java.util.Scanner;
+
 public class Main {
+    public Scanner sc = new Scanner(System.in);
+    public String displayOptions =
+    "Username:\n" +
+    "Password:\n";
+    public String typedUsername, typedPassword;
+
+
     public static void main(String[] args) throws Exception {
-        System.out.println("Goodluck Nowela! Chat ka pag need mo assistance!");
+        
+        Main main = new Main ();
+        main.startTyping();
+
     }
+
+    public void startTyping() {
+        System.out.println(displayOptions);
+        queryUsername();
+        queryPassword();
+        displayInformation();
+
+
+    }
+
+    public void queryUsername(){
+        System.out.println("Enter your username: ");
+        typedUsername = sc.nextLine();
+    }
+
+    public void queryPassword(){
+        System.out.println("Enter your password: ");
+        typedPassword = sc.nextLine();
+    }
+    
+    
 }
 
 /*
