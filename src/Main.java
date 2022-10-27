@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 public class Main {
     public Scanner sc = new Scanner(System.in);
-    public String displayOptions =
-    "Username:\n" +
-    "Password:\n";
     public String typedUsername, typedPassword;
 
 
@@ -16,11 +13,10 @@ public class Main {
     }
 
     public void startTyping() {
-        System.out.println(displayOptions);
+        
         queryUsername();
         queryPassword();
-        displayInformation();
-
+        displayAmount();
 
     }
 
@@ -33,8 +29,12 @@ public class Main {
         System.out.println("Enter your password: ");
         typedPassword = sc.nextLine();
     }
-    
-    
+
+    public void displayAmount() {
+        Bank bank = new Bank();
+        System.out.println(bank.getAmount());
+    }
+
 }
 
 /*
