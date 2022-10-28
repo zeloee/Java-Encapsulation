@@ -1,0 +1,8 @@
+/*
+ * Congrats!
+ * 
+ * Inside the Main Class do the following:
+ * Create queryDepositAmount method that asks user for the amount to be deposited
+ * Create 
+ * 
+ */
