@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 public class Bank {
-
     public Scanner sc = new Scanner (System.in);
     private String Password, UserName;
-    private int [] Amount;
+    private int Amount;
     private double cardNumber;
 
     //setter
@@ -12,9 +11,8 @@ public class Bank {
         
     }
 
-
     //getter
-    public int[] getAmount(){
+    public int getAmount(){
         return Amount;
     }
 }
