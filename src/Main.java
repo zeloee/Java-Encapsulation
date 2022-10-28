@@ -1,80 +1,93 @@
 import java.util.Scanner;
 
-// Identity
 public class Main {
-    // State
     public Scanner sc = new Scanner(System.in);
-    public String displayOptions = 
-        "[1] iPhone 14 - Php 61,990\n" + 
-        "[2] iPhone 14 Plus - Php 68,990\n" +
-        "[3] iPhone 14 Pro - Php 76,990\n" +
-        "[4] iPhone 14 Pro Max - Php 83,990\n\n" +
-        "[1] Regular - No discount\n" +
-        "[2] Student - 10%\n" +
-        "[3] PWD - 20%\n" +
-        "[4] Senior Citizen - 30%\n";
-    public int selectedBrand, selectedDiscount;
+    public String typedUsername, typedPassword;
+    public int amount;
+    Bank bank = new Bank("BernardSapida", "Password123");
 
     public static void main(String[] args) throws Exception {
-        // Code Runner
-
-        // Instantiation of the class (Creating object)
-        Main main = new Main();
-        main.startTransaction();
+        Main main = new Main ();
+        main.startTyping();
     }
 
-    // Behavior (One method/function should do one thing)
-    // Rule: method first word should be a verb
-    public void startTransaction() {
-        System.out.println(displayOptions);
-        queryBrand();
-        queryStatus();
-        displayComputation();
+    public void startTyping() {
+        while(true) {
+            verifyUsername();
+            verifyPassword();
+            startActions();
+        }
     }
 
-    /**
-     * This function asks the user to enter a number between 1 and 4, and then stores that number in
-     * the variable selectedBrand
-     */
-    public void queryBrand() {
-        System.out.print("Enter your choice of brand [1-4]: ");
-        selectedBrand = sc.nextInt();
+    public void queryUsername(){
+        System.out.print("\nEnter your username: ");
+        typedUsername = sc.nextLine();
     }
 
-    /**
-     * This function asks the user to enter a status number and then stores that number in the variable
-     * selectedDiscount.
-     */
-    public void queryStatus() {
-        System.out.print("Enter status [1-4]: ");
-        selectedDiscount = sc.nextInt();
+    public void queryPassword(){
+        System.out.print("\nEnter your password: ");
+        typedPassword = sc.nextLine();
     }
 
-    /**
-     * The function takes the selected brand and discount from the user and passes it to the child
-     * class to calculate the total bill
-     */
-    public void displayComputation() {
-        Child child = new Child();
-        child.setTotalBill(selectedBrand, selectedDiscount);
-        System.out.println("Your total bill is: " + child.getTotalBill());
+    public boolean verifyUsername() {
+        boolean validUsername = false;
+
+        while(!validUsername) {
+            queryUsername();
+            if(typedUsername.equals(bank.getUsername())) validUsername = true;
+            else System.out.println("Your username didn't exist!");
+        }
+        return true;
+    }
+
+    public boolean verifyPassword() {
+        boolean validPassword = false;
+
+        while(!validPassword) {
+            queryPassword();
+            if(typedPassword.equals(bank.getPassword())) {
+                validPassword = true;
+                System.out.println("You are now logged in!");
+            }
+            else System.out.println("Your password is incorrect!");
+        }
+        return true;
+    }
+
+    public void queryAmount(){
+        System.out.print("\nEnter amount to deposit: ");
+        amount = sc.nextInt();
+    }
+
+    public void startActions() {
+        action: while(true) {
+            System.out.println("\n==================================================");
+            System.out.println("\n[1] Deposit amount");
+            System.out.println("[2] Withdraw amount");
+            System.out.println("[3] Check card information");
+            System.out.println("[4] Signout");
+            System.out.print("Enter action number: ");
+            int action = sc.nextInt();
+
+            switch(action) {
+                case 1 -> { 
+                    queryAmount();
+                    bank.setAmount(amount);
+                }
+                case 2 -> { 
+                    queryAmount();
+                    if(amount <= bank.getAmount()) {
+                        bank.withdrawAmount(amount);
+                        System.out.println(amount + " Php withdraw successfully!");
+                        break;
+                    } else System.out.println("You dont have enough funds to withdraw");
+                }
+                case 3 -> { bank.printCardInformation(); }
+                case 4 -> { 
+                    System.out.println("Thank you for making transaction! You are signed out.");
+                    System.exit(1);
+                }
+            }
+        }
     }
 }
-
-/*
-    [1] iPhone 14 - Php 61,990
-    [2] iPhone 14 Plus - Php 68,990
-    [3] iPhone 14 Pro - Php 76,990
-    [4] iPhone 14 Pro Max - Php 83,990
-
-    [1] Regular - No discount
-    [2] Student - 10%
-    [3] PWD - 20%
-    [4] Senior Citizen - 30%
-
-    Enter your choice of brand [1-4]: 1
-    Enter status [1-4]: 1
-    Total bill: 
-
-    4 * 4 = 16 IF's
-*/
