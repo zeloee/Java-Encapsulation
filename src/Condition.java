@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class App {
+public class Condition {
     public static void main(String[] args) throws Exception {
         System.out.println("\n==============================\n");
         int num1 = 4;
